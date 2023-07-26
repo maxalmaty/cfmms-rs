@@ -77,6 +77,7 @@ impl UniswapV2Dex {
         progress_bar: ProgressBar,
     ) -> Result<Vec<Pool>, CFMMError<M>> {
         let factory = abi::IUniswapV2Factory::new(self.factory_address, middleware.clone());
+        println!("factory {:?}", factory);
 
         let pairs_length: U256 = factory.all_pairs_length().call().await?;
         //Initialize the progress bar message
